@@ -5,9 +5,9 @@ const winningCombinations = [
 ];
 
 export function checkWin(currentTurn, cells) {
-  return winningCombinations.some(combination => {
-    return combination.every(index => {
-      return cells[index].classList.contains(currentTurn)
+  return winningCombinations.some(function(combination) {
+    return combination.every(function(index) {
+      return cells[index].classList.contains(currentTurn);
     })
   })
 }
