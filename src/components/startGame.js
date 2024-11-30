@@ -1,7 +1,4 @@
-const firstPlayerNameInput = document.querySelector('.first-player-input');
-const secondPlayerNameInput = document.querySelector('.second-player-input');
-
-export function startGame(board) {
+export function startGame(board, firstPlayerNameInput, secondPlayerNameInput) {
   if (firstPlayerNameInput.value && secondPlayerNameInput.value) {
     firstPlayerNameInput.classList.remove('error');
     secondPlayerNameInput.classList.remove('error');

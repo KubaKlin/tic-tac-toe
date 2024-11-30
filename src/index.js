@@ -1,13 +1,15 @@
 import './style.css';
 import { startGame } from "./components/startGame";
+import { checkWin } from "./components/checkWin";
 
-const firstPlayer = 'x';
-const secondPlayer = 'circle';
-const winningCombinations = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6]
-];
+const firstPlayerNameInput = document.querySelector('.first-player-input');
+const secondPlayerNameInput = document.querySelector('.second-player-input');
+
+const playerO = 'circle';
+const playerX = 'cross';
+
+const firstPlayer = firstPlayerNameInput?.value;
+const secondPlayer = firstPlayerNameInput?.value;
 
 const startGameButton = document.querySelector('.start-game-button');
 
@@ -15,8 +17,19 @@ const board = document.querySelector('.board');
 const cells = document.querySelectorAll('.cell');
 const winningMessage = document.querySelector('.winning-message');
 const restartButton = document.querySelector('.restart-button');
-let isPlayerOTurn = false;
+let isSecondPlayerTurn = false;
 
 startGameButton?.addEventListener('click', function() {
-  startGame(board);
+  startGame(board, firstPlayerNameInput, secondPlayerNameInput);
+})
+
+cells.forEach(function(cell) {
+  cell.addEventListener('click', function() {
+    let currentTurn = isSecondPlayerTurn ? playerO : playerX;
+    cell.classList.add(currentTurn);
+    isSecondPlayerTurn = !isSecondPlayerTurn;
+    if (checkWin(currentTurn, cells)) {
+      console.log(currentTurn + 'wins!!');
+    }
+  })
 })
