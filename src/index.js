@@ -35,9 +35,10 @@ cells.forEach(function (cell) {
   cell.addEventListener('click', function () {
     const firstPlayerName = firstPlayerNameInput?.value;
     const secondPlayerName = secondPlayerNameInput?.value;
-    let currentTurn = isSecondPlayerTurn ? playerXClass : playerOClass;
-    let currentPlayer = isSecondPlayerTurn ? firstPlayerName : secondPlayerName;
+    const currentTurn = isSecondPlayerTurn ? playerXClass : playerOClass;
+    const currentPlayer = isSecondPlayerTurn ? firstPlayerName : secondPlayerName;
     cell.classList.add(currentTurn);
+
     if (checkWin(currentTurn, cells)) {
       bottomControls?.classList.add('visible');
       winningMessage.innerText = `${isSecondPlayerTurn ? secondPlayerName : firstPlayerName} wins!`;
