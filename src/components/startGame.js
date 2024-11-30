@@ -7,11 +7,12 @@ export function startGame(board, firstPlayerNameInput, secondPlayerNameInput) {
   if (firstPlayerNameInput.value && secondPlayerNameInput.value) {
     board?.classList.add('visible');
     startWrapper?.classList.add('hidden');
-    currentTurnWrapper.innerText = (`Current turn: ${firstPlayerName}`);
+    currentTurnWrapper.innerText = `Current turn: ${firstPlayerName}`;
   } else {
     if (firstPlayerNameInput.value === '') {
       firstPlayerNameInput.placeholder = 'Name cannot be empty';
-    } if (secondPlayerNameInput.value === '') {
+    }
+    if (secondPlayerNameInput.value === '') {
       secondPlayerNameInput.placeholder = 'Name cannot be empty';
     }
   }
