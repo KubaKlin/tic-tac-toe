@@ -42,10 +42,12 @@ cells.forEach(function (cell) {
     if (checkWin(currentTurn, cells)) {
       bottomControls?.classList.add('visible');
       winningMessage.innerText = `${isSecondPlayerTurn ? secondPlayerName : firstPlayerName} wins!`;
+      board.classList.add('disabled');
     }
     if (checkDraw(playerXClass, playerOClass, cells)) {
       bottomControls?.classList.add('visible');
       winningMessage.innerText = 'It`s a draw!';
+      board.classList.add('disabled');
     } else {
       currentTurnWrapper.innerText = 'Current turn: ' + currentPlayer;
       isSecondPlayerTurn = !isSecondPlayerTurn;

@@ -71,6 +71,10 @@ body {
   pointer-events: auto;
 }
 
+.board.disabled {
+  pointer-events: none;
+}
+
 .cell {
   display: flex;
   width: 33%;

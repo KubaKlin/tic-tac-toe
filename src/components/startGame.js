@@ -3,6 +3,7 @@ const currentTurnWrapper = document.querySelector('.current-turn');
 
 export function startGame(board, firstPlayerNameInput, secondPlayerNameInput) {
   const firstPlayerName = firstPlayerNameInput?.value;
+  board.classList.remove('disabled');
 
   if (firstPlayerNameInput.value && secondPlayerNameInput.value) {
     board?.classList.add('visible');
