@@ -36,7 +36,9 @@ cells.forEach(function (cell) {
     const firstPlayerName = firstPlayerNameInput?.value;
     const secondPlayerName = secondPlayerNameInput?.value;
     const currentTurnClass = isSecondPlayerTurn ? playerXClass : playerOClass;
-    const currentPlayerName = isSecondPlayerTurn ? firstPlayerName : secondPlayerName;
+    const currentPlayerName = isSecondPlayerTurn
+      ? firstPlayerName
+      : secondPlayerName;
     cell.classList.add(currentTurnClass);
 
     if (checkWin(currentTurnClass, cells)) {
