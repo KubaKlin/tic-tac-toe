@@ -89,12 +89,12 @@ body {
 }
 
 .cell.circle {
-  background-image: url("img/circle.svg");
+  background-image: url('img/circle.svg');
   background-size: 45px;
 }
 
 .cell.cross {
-  background-image: url("img/cross.svg");
+  background-image: url('img/cross.svg');
   background-size: 60px;
 }
 

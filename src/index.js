@@ -25,7 +25,7 @@ let isFirstPlayerTurn = true;
 let gameState = [
   [null, null, null],
   [null, null, null],
-  [null, null, null]
+  [null, null, null],
 ];
 
 startGameButton?.addEventListener('click', function () {
@@ -43,17 +43,21 @@ cells.forEach(function (cell) {
     const firstPlayerName = firstPlayerNameInput?.value;
     const secondPlayerName = secondPlayerNameInput?.value;
     const currentTurnClass = isFirstPlayerTurn ? playerXClass : playerOClass;
-    const currentPlayerName = isFirstPlayerTurn ? secondPlayerName : firstPlayerName;
+    const currentPlayerName = isFirstPlayerTurn
+      ? firstPlayerName
+      : secondPlayerName;
     cell.classList.add(currentTurnClass);
     markPosition(gameState, isFirstPlayerTurn, cell);
 
-    if ((checkWin(gameState, winningMessage, currentPlayerName)) || (checkDraw(gameState, winningMessage))) {
+    if (
+      checkWin(gameState, winningMessage, currentPlayerName) ||
+      checkDraw(gameState, winningMessage)
+    ) {
       bottomControls?.classList.add('visible');
       board.classList.add('disabled');
-    }
-    else {
-      currentTurnWrapper.innerText = 'Current turn: ' + currentPlayerName;
+    } else {
       isFirstPlayerTurn = !isFirstPlayerTurn;
+      currentTurnWrapper.innerText = 'Current turn: ' + currentPlayerName;
     }
   });
 });
@@ -74,6 +78,6 @@ restartButton.addEventListener('click', function () {
   gameState = [
     [null, null, null],
     [null, null, null],
-    [null, null, null]
+    [null, null, null],
   ];
 });
