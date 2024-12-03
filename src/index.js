@@ -36,7 +36,7 @@ cells.forEach(function (cell) {
     const firstPlayerName = firstPlayerNameInput?.value;
     const secondPlayerName = secondPlayerNameInput?.value;
     const currentTurnClass = isSecondPlayerTurn ? playerXClass : playerOClass;
-    const currentPlayer = isSecondPlayerTurn ? firstPlayerName : secondPlayerName;
+    const currentPlayerName = isSecondPlayerTurn ? firstPlayerName : secondPlayerName;
     cell.classList.add(currentTurnClass);
 
     if (checkWin(currentTurnClass, cells)) {
@@ -49,7 +49,7 @@ cells.forEach(function (cell) {
       winningMessage.innerText = 'It`s a draw!';
       board.classList.add('disabled');
     } else {
-      currentTurnWrapper.innerText = 'Current turn: ' + currentPlayer;
+      currentTurnWrapper.innerText = 'Current turn: ' + currentPlayerName;
       isSecondPlayerTurn = !isSecondPlayerTurn;
     }
   });
