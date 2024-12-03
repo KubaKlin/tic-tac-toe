@@ -35,11 +35,11 @@ cells.forEach(function (cell) {
   cell.addEventListener('click', function () {
     const firstPlayerName = firstPlayerNameInput?.value;
     const secondPlayerName = secondPlayerNameInput?.value;
-    const currentTurn = isSecondPlayerTurn ? playerXClass : playerOClass;
+    const currentTurnClass = isSecondPlayerTurn ? playerXClass : playerOClass;
     const currentPlayer = isSecondPlayerTurn ? firstPlayerName : secondPlayerName;
-    cell.classList.add(currentTurn);
+    cell.classList.add(currentTurnClass);
 
-    if (checkWin(currentTurn, cells)) {
+    if (checkWin(currentTurnClass, cells)) {
       bottomControls?.classList.add('visible');
       winningMessage.innerText = `${isSecondPlayerTurn ? secondPlayerName : firstPlayerName} wins!`;
       board.classList.add('disabled');

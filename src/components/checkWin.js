@@ -9,10 +9,10 @@ const winningCombinations = [
   [2, 4, 6],
 ];
 
-export function checkWin(currentTurn, cells) {
+export function checkWin(currentTurnClass, cells) {
   return winningCombinations.some(function (combination) {
     return combination.every(function (index) {
-      return cells[index].classList.contains(currentTurn);
+      return cells[index].classList.contains(currentTurnClass);
     });
   });
 }
