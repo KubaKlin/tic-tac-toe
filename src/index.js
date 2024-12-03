@@ -3,6 +3,7 @@ import { startGame } from './components/startGame';
 import { checkWin } from './components/checkWin';
 import { resetGame } from './components/resetGame';
 import { checkDraw } from './components/checkDraw';
+import { markPosition } from './components/markPosition';
 
 const firstPlayerNameInput = document.querySelector('.first-player-input');
 const secondPlayerNameInput = document.querySelector('.second-player-input');
@@ -19,7 +20,13 @@ const cells = document.querySelectorAll('.cell');
 const bottomControls = document.querySelector('.winning-message-wrapper');
 const winningMessage = document.querySelector('.winning-message');
 const restartButton = document.querySelector('.restart-button');
-let isSecondPlayerTurn = false;
+let isFirstPlayerTurn = true;
+
+let gameState = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+];
 
 startGameButton?.addEventListener('click', function () {
   startGame(
@@ -35,24 +42,18 @@ cells.forEach(function (cell) {
   cell.addEventListener('click', function () {
     const firstPlayerName = firstPlayerNameInput?.value;
     const secondPlayerName = secondPlayerNameInput?.value;
-    const currentTurnClass = isSecondPlayerTurn ? playerXClass : playerOClass;
-    const currentPlayerName = isSecondPlayerTurn
-      ? firstPlayerName
-      : secondPlayerName;
+    const currentTurnClass = isFirstPlayerTurn ? playerXClass : playerOClass;
+    const currentPlayerName = isFirstPlayerTurn ? secondPlayerName : firstPlayerName;
     cell.classList.add(currentTurnClass);
+    markPosition(gameState, isFirstPlayerTurn, cell);
 
-    if (checkWin(currentTurnClass, cells)) {
+    if ((checkWin(gameState, winningMessage, currentPlayerName)) || (checkDraw(gameState, winningMessage))) {
       bottomControls?.classList.add('visible');
-      winningMessage.innerText = `${isSecondPlayerTurn ? secondPlayerName : firstPlayerName} wins!`;
       board.classList.add('disabled');
     }
-    if (checkDraw(playerXClass, playerOClass, cells)) {
-      bottomControls?.classList.add('visible');
-      winningMessage.innerText = 'It`s a draw!';
-      board.classList.add('disabled');
-    } else {
+    else {
       currentTurnWrapper.innerText = 'Current turn: ' + currentPlayerName;
-      isSecondPlayerTurn = !isSecondPlayerTurn;
+      isFirstPlayerTurn = !isFirstPlayerTurn;
     }
   });
 });
@@ -68,5 +69,11 @@ restartButton.addEventListener('click', function () {
     secondPlayerNameInput,
     currentTurnWrapper,
     startWrapper,
+    gameState,
   );
+  gameState = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+  ];
 });

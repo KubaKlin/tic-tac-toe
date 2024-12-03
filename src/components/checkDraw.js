@@ -1,9 +1,7 @@
-export function checkDraw(playerXClass, playerOClass, cells) {
-  const boardCells = Array.from(cells);
-  return boardCells.every(function (cell) {
-    return (
-      cell.classList.contains(playerXClass) ||
-      cell.classList.contains(playerOClass)
-    );
-  });
+export function checkDraw(gameState, winningMessage) {
+  if (gameState[0].indexOf(null) === -1 &&
+      gameState[1].indexOf(null) === -1 &&
+      gameState[2].indexOf(null) === -1) {
+    return winningMessage.innerText = 'It`s a draw!';
+  }
 }

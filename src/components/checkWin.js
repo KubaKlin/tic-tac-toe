@@ -1,18 +1,21 @@
-const winningCombinations = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
+export function checkWin(gameState, winningMessage, currentPlayerName) {
+  const winMessage = `${currentPlayerName} wins!`;
 
-export function checkWin(currentTurnClass, cells) {
-  return winningCombinations.some(function (combination) {
-    return combination.every(function (index) {
-      return cells[index].classList.contains(currentTurnClass);
-    });
-  });
+  for(let i = 0; i < 3; i++) {
+    let rowSum = gameState[i][0] + gameState[i][1] + gameState[i][2];
+    let columnSum = gameState[0][i] + gameState[1][i] + gameState[2][i];
+    if (rowSum === 3 || columnSum === 3) {
+      return winningMessage.innerText = winMessage;
+    } else if (rowSum === -3 || columnSum === -3) {
+      return winningMessage.innerText = winMessage;
+    }
+  }
+
+  let diagonalSum = gameState[0][0] + gameState[1][1] + gameState[2][2];
+  let secondDiagonalSum = gameState[0][2] + gameState[1][1] + gameState[2][0];
+  if (diagonalSum === 3 || secondDiagonalSum === 3) {
+    return winningMessage.innerText = winMessage;
+  } else if (diagonalSum === -3 || secondDiagonalSum === -3) {
+    return winningMessage.innerText = winMessage;
+  }
 }
