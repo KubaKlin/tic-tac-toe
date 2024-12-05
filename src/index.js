@@ -55,6 +55,7 @@ cells.forEach(function (cell) {
     ) {
       bottomControls?.classList.add('visible');
       board.classList.add('disabled');
+
     } else {
       isFirstPlayerTurn = !isFirstPlayerTurn;
       currentTurnWrapper.innerText = 'Current turn: ' + currentPlayerName;
