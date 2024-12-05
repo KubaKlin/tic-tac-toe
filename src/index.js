@@ -74,7 +74,6 @@ restartButton.addEventListener('click', function () {
     secondPlayerNameInput,
     currentTurnWrapper,
     startWrapper,
-    gameState,
   );
   gameState = [
     [null, null, null],

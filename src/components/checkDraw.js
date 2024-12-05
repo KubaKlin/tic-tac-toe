@@ -1,3 +1,4 @@
+// checking if all board position are changed without the winner
 export function checkDraw(gameState, winningMessage) {
   if (
     gameState[0].indexOf(null) === -1 &&
