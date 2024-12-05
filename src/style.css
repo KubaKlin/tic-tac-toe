@@ -55,20 +55,17 @@ body {
 .board {
   width: 250px;
   height: 250px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   justify-items: center;
   align-items: center;
   margin: 35px 0;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .board.visible {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
 }
 
 .board.disabled {
@@ -105,14 +102,12 @@ body {
 }
 
 .winning-message-wrapper {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
   text-align: center;
 }
 
 .winning-message-wrapper.visible {
-  opacity: 1;
-  pointer-events: auto;
+  display: block;
 }
 
 .winning-message {
