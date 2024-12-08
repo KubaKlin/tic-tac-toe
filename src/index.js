@@ -22,7 +22,7 @@ const winningMessage = document.querySelector('.winning-message');
 const restartButton = document.querySelector('.restart-button');
 let isFirstPlayerTurn = true;
 
-let gameState = [
+const gameState = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -55,7 +55,6 @@ cells.forEach(function (cell) {
     ) {
       bottomControls?.classList.add('visible');
       board.classList.add('disabled');
-
     } else {
       isFirstPlayerTurn = !isFirstPlayerTurn;
       currentTurnWrapper.innerText = 'Current turn: ' + currentPlayerName;
@@ -75,9 +74,7 @@ restartButton.addEventListener('click', function () {
     currentTurnWrapper,
     startWrapper,
   );
-  gameState = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ];
+  gameState[0] = [null, null, null];
+  gameState[1] = [null, null, null];
+  gameState[2] = [null, null, null];
 });
